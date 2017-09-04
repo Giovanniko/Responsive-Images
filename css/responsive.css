@@ -1,0 +1,202 @@
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header__menu {
+  display: none;
+}
+
+.hero, .top-news, .scores, .weather, .recent-news {
+  order: 10;
+}
+
+@media screen and (max-width: 549px) {
+  .header__logo {
+    height: 48px;
+    margin-right: 0.5em;
+  }
+
+  .header__title {
+    margin-left: 0;
+    font-size: 2em;
+    vertical-align: bottom;
+  }
+
+  .nav {
+    z-index: 10;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
+  }
+
+  .nav.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  .nav__item {
+    display: list-item;
+    border-bottom: 1px solid #E0E0E0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .header__menu {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+
+  .header__menu svg {
+    width: 32px;
+    fill: #E0E0E0;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .hero {
+    order: 0;
+    width: 60%;
+  }
+  .weather {
+    order: 1;
+    width: 40%;
+  }
+}
+
+/* Resizes weather temperature and image to avoid wrapping */
+
+@media screen and (min-width: 250px) and (max-width:645px) {
+  .weather__today {
+    width: 60%;
+    position: relative;
+    left: 10px;
+    vertical-align: middle;
+  }
+
+  .weather__today__deg,.weather__today__temp {
+    font-size:1.5em;
+  }
+
+  .weather__today__temp {
+    font-size:2em;
+
+  }
+
+  .weather__today__image {
+    width: 120px;
+    height:auto;
+  }
+}
+
+/* Puts text to ellipse when too narrow and flows off the image area.
+Courtesy of http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation */
+
+@media screen and (max-width:355px) {
+.description p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+/* don’t forget that block-with-text can’t be an inline element */
+  }
+}
+
+/*Converts the table into a list*/
+
+@media screen and (max-width: 375px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  .scores__table td {
+     padding: 0;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position:relative;
+    padding-left: 50%;
+    text-align: center;
+    margin:5px;
+  }
+
+  td:before {
+    position: absolute;
+    left: 6px;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before {content: "Date";}
+  td:nth-of-type(2):before { content: "Location";}
+  td:nth-of-type(3):before { content: "Home Team";}
+  td:nth-of-type(4):before { content: "Score";}
+  td:nth-of-type(5):before { content: "Score";}
+  td:nth-of-type(6):before { content: "Away Team";}
+
+}
+
+/*Make footer targets more easier to poke*/
+@media screen and (max-width:420px) {
+  footer a {
+  display:list-item;
+  }
+
+  .hero {
+  background-image: url(../images/Salento-420x280.jpg);
+  }
+}
+/* Additional minor breakpoint to elminate text overflow on
+desciption block and replace with ellipsis*/
+
+@media screen and (min-width: 550px) and (max-width: 580px) {
+.description p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+
+@media screen and (min-width: 700px) {
+  .hero {
+    width: 50%;
+  }
+  .top-news {
+    order: 1;
+    width: 50%;
+  }
+  .scores {
+    order: 2;
+    width: 60%;
+  }
+  .weather {
+    order: 3;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  main, .header__inner, .nav, .content {
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
